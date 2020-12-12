@@ -12,8 +12,8 @@ const Widget = () => {
                 height="1500"
                 style={{ border: 'none', overflow: 'hidden' }}
                 scrolling="no"
-                frameborder="0"
-                allowTransparency="true"
+                // frameborder="0"
+                // allowTransparency="true"
                 allow="encrypted-media"
 
             ></iframe>

@@ -19,6 +19,16 @@ const Post = ({ profilePic, message, timestamp, imgName, username }) => {
                 <p>{message}</p>
                 {/* Image is coming Later */}
             </div>
+            {
+                imgName ? (
+                    <div className="post__image">
+                        <img src={`https://fb-react-clone.herokuapp.com/retrive/images/single?name=${imgName}`} alt="" />
+                    </div>
+                ) : (
+                        console.log("DEBUG >>> No Image here")
+                    )
+            }
+
             <div className="post__options">
                 <div className="post__option">
                     <ThumbUp />

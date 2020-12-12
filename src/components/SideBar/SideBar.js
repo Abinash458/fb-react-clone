@@ -23,7 +23,7 @@ const SideBar = () => {
             <SideBarRow Icon={ChatIcon} title="Messenger" />
             <SideBarRow Icon={StorefrontIcon} title="Marketplace" />
             <SideBarRow Icon={VideoLibraryIcon} title="Videos" />
-            <SideBarRow Icon={ExpandMoreOutlinedIcon} title="More" />
+            <SideBarRow Icon={ExpandMoreOutlinedIcon} title="See More" />
         </div>
     )
 }

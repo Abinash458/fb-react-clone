@@ -1,21 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Pusher from 'pusher-js'
+
+import './Feed.css';
 
 import StoryReel from './StoryReel/StoryReel';
 import MessageSender from './MessageSender/MessageSender';
 import Post from './Post/Post';
 
 const Feed = () => {
+
+    const [postsData, setPostsData] = useState([]);
+
+    const syncFeed = () => {
+        axios.get('https://fb-react-clone.herokuapp.com/retrive/posts')
+            .then((res) => {
+                console.log(res.data)
+                setPostsData(res.data)
+            })
+    }
+
+    useEffect(() => {
+        syncFeed()
+    }, []);
+
     return (
         <div className="feed">
             <StoryReel />
             <MessageSender />
-            <Post
-                profilePic="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
-                message="Yo This is the message"
-                timestamp='1601493943737'
-                imgName="iamgeName"
-                username="Abinash Mohapatra"
-            />
+            {
+                postsData.map((entry) => (
+                    <Post
+                        key={entry.id}
+                        profilePic={entry.avatar}
+                        message={entry.text}
+                        timestamp={entry.timestamp}
+                        imgName={entry.imgName}
+                        username={entry.user}
+                    />
+                ))
+            }
         </div>
     )
 }
